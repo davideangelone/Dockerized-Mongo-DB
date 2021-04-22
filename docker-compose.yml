@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+    mongodb:
+        image: mongo:latest
+        container_name: mongodb
+        volumes:
+            - ./.docker/mongodb/data/db/:/data/db/
+            - ./.docker/mongodb/data/log/:/var/log/mongodb/
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: root
+            MONGO_INITDB_ROOT_PASSWORD: example
+            MONGO_INITDB_DATABASE: test
+        ports:
+            - 27017:27017
+        command: ["--logpath", "/var/log/mongodb/mongod.log"]
